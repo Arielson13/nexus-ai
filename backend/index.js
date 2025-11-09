@@ -2,9 +2,10 @@ const express = require("express");
 const { perguntar } = require("./gnai");
 const app = express();
 require("dotenv").config();
+const cors = require("cors");
+const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
-const cors = require("cors");
 app.use(cors());
 
 app.post("/perguntar", async (req, res) => {
@@ -22,7 +23,10 @@ app.post("/perguntar", async (req, res) => {
   }
 });
 
-const PORT = process.env.PORT || 3000;
+app.get("/", () => {
+  return "Hello World";
+});
+
 app.listen(PORT, () => {
   console.log(`Servidor rodando em http://localhost:${PORT}`);
 });
