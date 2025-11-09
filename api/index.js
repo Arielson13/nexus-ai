@@ -8,23 +8,19 @@ const PORT = process.env.PORT || 3000;
 app.use(express.json());
 app.use(cors());
 
-// app.post("/perguntar", async (req, res) => {
-//   const { prompt } = req.body;
-//   if (typeof prompt !== "string" || prompt.trim() === "") {
-//     return res.status(400).json({ error: "Prompt inválido" });
-//   }
+app.post("/perguntar", async (req, res) => {
+  const { prompt } = req.body;
+  if (typeof prompt !== "string" || prompt.trim() === "") {
+    return res.status(400).json({ error: "Prompt inválido" });
+  }
 
-//   try {
-//     const resposta = await perguntar(prompt);
-//     res.json({ resposta });
-//   } catch (err) {
-//     console.error("Erro ao processar prompt:", err);
-//     res.status(500).json({ error: "Erro interno ao processar o prompt" });
-//   }
-// });
-
-app.get("/", () => {
-  return "Hello World";
+  try {
+    const resposta = await perguntar(prompt);
+    res.json({ resposta });
+  } catch (err) {
+    console.error("Erro ao processar prompt:", err);
+    res.status(500).json({ error: "Erro interno ao processar o prompt" });
+  }
 });
 
 app.listen(PORT, () => {
