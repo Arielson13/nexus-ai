@@ -84,7 +84,7 @@ form.addEventListener("submit", async (e) => {
   showThinking();
 
   try {
-    const res = await fetch("http://localhost:3000/perguntar", {
+    const res = await fetch("https://nexus-ai-gules-rho.vercel.app/perguntar", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ prompt }),
