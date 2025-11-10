@@ -3,7 +3,7 @@ const { perguntar } = require("../config/gnai.js");
 const router = express.Router();
 
 router.get("/initial", async (req, res) => {
-    return "Hello World";
+    res.send("Hello World");
 })
 
 router.post("/perguntar", async (req, res) => {
